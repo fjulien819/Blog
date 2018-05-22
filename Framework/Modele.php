@@ -1,5 +1,5 @@
 <?php
-
+namespace Framework;
 require_once 'Configuration.php';
 
 /**
@@ -12,13 +12,13 @@ require_once 'Configuration.php';
  */
 abstract class Modele {
 
-    /** Objet PDO d'accès à la BD 
+    /** Objet PDO d'accès à la BD
         Statique donc partagé par toutes les instances des classes dérivées */
     private static $bdd;
 
     /**
      * Exécute une requête SQL
-     * 
+     *
      * @param string $sql Requête SQL
      * @param array $params Paramètres de la requête
      * @return PDOStatement Résultats de la requête
@@ -36,7 +36,7 @@ abstract class Modele {
 
     /**
      * Renvoie un objet de connexion à la BDD en initialisant la connexion au besoin
-     * 
+     *
      * @return PDO Objet PDO de connexion à la BDD
      */
     private static function getBdd() {
@@ -46,8 +46,8 @@ abstract class Modele {
             $login = Configuration::get("login");
             $mdp = Configuration::get("mdp");
             // Création de la connexion
-            self::$bdd = new PDO($dsn, $login, $mdp, 
-                    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            self::$bdd = new \PDO($dsn, $login, $mdp,
+                    array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
         }
         return self::$bdd;
     }

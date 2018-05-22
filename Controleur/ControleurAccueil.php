@@ -1,9 +1,12 @@
 <?php
 
-require_once 'Framework/Controleur.php';
-require_once 'Modele/Billet.php';
+//require_once 'Framework/Controleur.php';
+//require_once 'Modele/Billet.php';
 
-class ControleurAccueil extends Controleur {
+require_once 'Framework/autoloader.php';
+framework\Autoloader::register();
+
+class ControleurAccueil extends framework\Controleur {
 
     private $billet;
 
@@ -18,4 +21,3 @@ class ControleurAccueil extends Controleur {
     }
 
 }
-

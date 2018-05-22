@@ -1,15 +1,15 @@
 <?php
-
+namespace Framework;
 require_once 'Controleur.php';
 require_once 'Requete.php';
 require_once 'Vue.php';
 
 /*
  * Classe de routage des requêtes entrantes.
- * 
+ *
  * Inspirée du framework PHP de Nathan Davison
  * (https://github.com/ndavison/Nathan-MVC)
- * 
+ *
  * @version 1.0
  * @author Baptiste Pesquet
  */
@@ -37,7 +37,7 @@ class Routeur {
 
     /**
      * Instancie le contrôleur approprié en fonction de la requête reçue
-     * 
+     *
      * @param Requete $requete Requête reçue
      * @return Instance d'un contrôleur
      * @throws Exception Si la création du contrôleur échoue
@@ -70,7 +70,7 @@ class Routeur {
 
     /**
      * Détermine l'action à exécuter en fonction de la requête reçue
-     * 
+     *
      * @param Requete $requete Requête reçue
      * @return string Action à exécuter
      */
@@ -84,7 +84,7 @@ class Routeur {
 
     /**
      * Gère une erreur d'exécution (exception)
-     * 
+     *
      * @param Exception $exception Exception qui s'est produite
      */
     private function gererErreur(Exception $exception) {

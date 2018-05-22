@@ -1,16 +1,19 @@
 <?php
 
-require_once 'Framework/Modele.php';
+//require_once 'Framework/Modele.php';
+
+require_once 'Framework/Autoloader.php';
+Framework\Autoloader::register();
 
 /**
- * Fournit les services d'accès aux genres musicaux 
- * 
+ * Fournit les services d'accès aux genres musicaux
+ *
  * @author Baptiste Pesquet
  */
-class Billet extends Modele {
+class Billet extends Framework\Modele {
 
     /** Renvoie la liste des billets du blog
-     * 
+     *
      * @return PDOStatement La liste des billets
      */
     public function getBillets() {
@@ -22,7 +25,7 @@ class Billet extends Modele {
     }
 
     /** Renvoie les informations sur un billet
-     * 
+     *
      * @param int $id L'identifiant du billet
      * @return array Le billet
      * @throws Exception Si l'identifiant du billet est inconnu
