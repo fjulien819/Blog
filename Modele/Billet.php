@@ -3,14 +3,14 @@
 require_once 'Framework/Modele.php';
 
 /**
- * Fournit les services d'accès aux genres musicaux 
- * 
+ * Fournit les services d'accès aux genres musicaux
+ *
  * @author Baptiste Pesquet
  */
 class Billet extends Modele {
 
     /** Renvoie la liste des billets du blog
-     * 
+     *
      * @return PDOStatement La liste des billets
      */
     public function getBillets() {
@@ -22,7 +22,7 @@ class Billet extends Modele {
     }
 
     /** Renvoie les informations sur un billet
-     * 
+     *
      * @param int $id L'identifiant du billet
      * @return array Le billet
      * @throws Exception Si l'identifiant du billet est inconnu
@@ -37,5 +37,17 @@ class Billet extends Modele {
         else
             throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }
+
+    /**
+     * Renvoie le nombre total de billets
+     *
+     * @return int Le nombre de billets
+     */
+    public function getNombreBillets() {
+    $sql = 'select count(*) as nbBillets from T_BILLET';
+    $resultat = $this->executerRequete($sql);
+    $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
+    return $ligne['nbBillets'];
+}
 
 }
