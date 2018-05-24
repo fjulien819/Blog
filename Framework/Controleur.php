@@ -6,7 +6,7 @@ require_once 'Vue.php';
 /**
  * Classe abstraite Controleur
  * Fournit des services communs aux classes Controleur dérivées
- * 
+ *
  * @version 1.0
  * @author Baptiste Pesquet
  */
@@ -14,13 +14,13 @@ abstract class Controleur {
 
     /** Action à réaliser */
     private $action;
-    
+
     /** Requête entrante */
     protected $requete;
 
     /**
      * Définit la requête entrante
-     * 
+     *
      * @param Requete $requete Requete entrante
      */
     public function setRequete(Requete $requete)
@@ -31,7 +31,7 @@ abstract class Controleur {
     /**
      * Exécute l'action à réaliser.
      * Appelle la méthode portant le même nom que l'action sur l'objet Controleur courant
-     * 
+     *
      * @throws Exception Si l'action n'existe pas dans la classe Controleur courante
      */
     public function executerAction($action)
@@ -54,7 +54,7 @@ abstract class Controleur {
 
     /**
      * Génère la vue associée au contrôleur courant
-     * 
+     *
      * @param array $donneesVue Données nécessaires pour la génération de la vue
      */
     protected function genererVue($donneesVue = array())
@@ -62,10 +62,23 @@ abstract class Controleur {
         // Détermination du nom du fichier vue à partir du nom du contrôleur actuel
         $classeControleur = get_class($this);
         $controleur = str_replace("Controleur", "", $classeControleur);
-        
+
         // Instanciation et génération de la vueF
         $vue = new Vue($this->action, $controleur);
         $vue->generer($donneesVue);
+    }
+
+   /**
+    * Effectue une redirection vers un contrôleur et une action spécifiques
+    *
+    * @param string $controleur Contrôleur
+    * @param type $action Action Action
+    */
+    protected function rediriger($controleur, $action = null)
+    {
+      $racineWeb = Configuration::get("racineWeb", "/");
+      // Redirection vers l'URL racine_site/controleur/action
+      header("Location:" . $racineWeb . $controleur . "/" . $action);
     }
 
 }
