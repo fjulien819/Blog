@@ -1,6 +1,5 @@
 <?php
-namespace Framework;
-require_once 'Configuration.php';
+namespace App\Framework;
 
 /**
  * Classe abstraite Modèle.
@@ -21,7 +20,7 @@ abstract class Modele {
      *
      * @param string $sql Requête SQL
      * @param array $params Paramètres de la requête
-     * @return PDOStatement Résultats de la requête
+     * @return \PDOStatement Résultats de la requête
      */
     protected function executerRequete($sql, $params = null) {
         if ($params == null) {

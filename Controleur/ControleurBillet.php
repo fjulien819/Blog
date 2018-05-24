@@ -1,17 +1,20 @@
 <?php
 
+namespace App\Controleur;
 //require_once 'Framework/Controleur.php';
 //require_once 'Modele/Billet.php';
 //require_once 'Modele/Commentaire.php';
+use App\Framework\Controleur;
+use App\Modele\Billet;
+use App\Modele\Commentaire;
 
-require_once 'Framework/autoloader.php';
-framework\Autoloader::register();
+
 /**
  * Contrôleur des actions liées aux billets
  *
  * @author Baptiste Pesquet
  */
-class ControleurBillet extends framework\Controleur {
+class ControleurBillet extends Controleur {
 
     private $billet;
     private $commentaire;

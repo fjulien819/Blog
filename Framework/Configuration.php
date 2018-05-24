@@ -1,5 +1,5 @@
 <?php
-namespace Framework;
+namespace App\Framework;
 /**
  * Classe de gestion des paramètres de configuration
  *

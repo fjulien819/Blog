@@ -1,12 +1,9 @@
 <?php
+namespace App\Controleur;
+use App\Framework\Controleur;
+use App\Modele\Billet;
 
-//require_once 'Framework/Controleur.php';
-//require_once 'Modele/Billet.php';
-
-require_once 'Framework/autoloader.php';
-framework\Autoloader::register();
-
-class ControleurAccueil extends framework\Controleur {
+class ControleurAccueil extends Controleur {
 
     private $billet;
 

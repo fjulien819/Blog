@@ -1,8 +1,5 @@
 <?php
-namespace Framework;
-require_once 'Controleur.php';
-require_once 'Requete.php';
-require_once 'Vue.php';
+namespace App\Framework;
 
 /*
  * Classe de routage des requêtes entrantes.
@@ -54,18 +51,12 @@ class Routeur {
         }
         // Création du nom du fichier du contrôleur
         // La convention de nommage des fichiers controleurs est : Controleur/Controleur<$controleur>.php
-        $classeControleur = "Controleur" . $controleur;
-        $fichierControleur = "Controleur/" . $classeControleur . ".php";
-        if (file_exists($fichierControleur)) {
-            // Instanciation du contrôleur adapté à la requête
-            require($fichierControleur);
+
+        $classeControleur =   'App\Controleur\Controleur'.$controleur;
+
             $controleur = new $classeControleur();
             $controleur->setRequete($requete);
             return $controleur;
-        }
-        else {
-            throw new Exception("Fichier '$fichierControleur' introuvable");
-        }
     }
 
     /**

@@ -1,5 +1,5 @@
 <?php
-namespace Framework;
+namespace App\Framework;
 /*
  * Classe modélisant une requête HTTP entrante
  *

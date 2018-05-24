@@ -1,20 +1,17 @@
 <?php
-
-//require_once 'Framework/Modele.php';
-
-require_once 'Framework/Autoloader.php';
-Framework\Autoloader::register();
+namespace App\Modele;
+use App\Framework\Modele;
 
 /**
  * Fournit les services d'accès aux genres musicaux
  *
  * @author Baptiste Pesquet
  */
-class Billet extends Framework\Modele {
+class Billet extends Modele {
 
     /** Renvoie la liste des billets du blog
      *
-     * @return PDOStatement La liste des billets
+     * @return \PDOStatement La liste des billets
      */
     public function getBillets() {
         $sql = 'select BIL_ID as id, BIL_DATE as date,'
@@ -28,7 +25,7 @@ class Billet extends Framework\Modele {
      *
      * @param int $id L'identifiant du billet
      * @return array Le billet
-     * @throws Exception Si l'identifiant du billet est inconnu
+     * @throws \Exception Si l'identifiant du billet est inconnu
      */
     public function getBillet($idBillet) {
         $sql = 'select BIL_ID as id, BIL_DATE as date,'
@@ -38,7 +35,7 @@ class Billet extends Framework\Modele {
         if ($billet->rowCount() > 0)
             return $billet->fetch();  // Accès à la première ligne de résultat
         else
-            throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
+            throw new \Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }
 
 }

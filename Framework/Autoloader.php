@@ -1,7 +1,8 @@
 <?php /**
  * Class Autoloader
  */
-namespace Framework;
+namespace App\Framework;
+
 class Autoloader{
 
     /**
@@ -18,17 +19,17 @@ class Autoloader{
      */
     static function autoload($class)
     {
+
         $filename = $class . '.php';
+
+        //App\Framework\Routeur
+        $class = str_replace('App\\', '', $class);
+        $filename = str_replace('\\', '/', $class).'.php';
 
         if(file_exists($filename))
         {
-            require $class . '.php';
+            require $filename;
         }
-        else
-        {
-            require 'Modele/' . $class . '.php';
-        }
-
     }
 
 }
