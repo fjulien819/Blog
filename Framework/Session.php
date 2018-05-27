@@ -44,14 +44,14 @@ class Session
      *
      * @param string $nom Nom de l'attribut
      * @return string Valeur de l'attribut
-     * @throws Exception Si l'attribut n'existe pas dans la session
+     * @throws \Exception Si l'attribut n'existe pas dans la session
      */
     public function getAttribut($nom) {
         if ($this->existeAttribut($nom)) {
             return $_SESSION[$nom];
         }
         else {
-            throw new Exception("Attribut '$nom' absent de la session");
+            throw new \Exception("Attribut '$nom' absent de la session");
         }
     }
 }

@@ -33,7 +33,7 @@ class ControleurConnexion extends Controleur
                   'Login ou mot de passe incorrects'), "index");
         }
         else
-            throw new Exception(
+            throw new \Exception(
               "Action impossible : login ou mot de passe non défini");
     }
     public function deconnecter()

@@ -27,7 +27,7 @@ class Utilisateur extends Modele {
    * @param string $login Le login
    * @param string $mdp Le mot de passe
    * @return mixed L'utilisateur
-   * @throws Exception Si aucun utilisateur ne correspond aux paramètres
+   * @throws \Exception Si aucun utilisateur ne correspond aux paramètres
    */
   public function getUtilisateur($login, $mdp)
   {
@@ -37,7 +37,7 @@ class Utilisateur extends Modele {
     if ($utilisateur->rowCount() == 1)
       return $utilisateur->fetch();  // Accès à la première ligne de résultat
     else
-      throw new Exception("Aucun utilisateur ne correspond aux identifiants
+      throw new \Exception("Aucun utilisateur ne correspond aux identifiants
         fournis");
     }
 }
