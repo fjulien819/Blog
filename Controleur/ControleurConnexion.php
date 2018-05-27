@@ -1,6 +1,8 @@
 <?php
-require_once 'Framework/Controleur.php';
-require_once 'Modele/Utilisateur.php';
+namespace App\Controleur;
+use App\Framework\Controleur;
+use App\Modele\Utilisateur;
+
 class ControleurConnexion extends Controleur
 {
     private $utilisateur;

@@ -1,6 +1,4 @@
-<?php /**
- * Class Autoloader
- */
+<?php
 namespace App\Framework;
 
 class Autoloader{

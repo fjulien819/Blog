@@ -1,7 +1,9 @@
 <?php
-require_once 'ControleurSecurise.php';
-require_once 'Modele/Billet.php';
-require_once 'Modele/Commentaire.php';
+namespace App\Controleur;
+use App\Framework\Controleur;
+use App\Modele\Billet;
+use App\Modele\Commentaire;
+
 /**
  * Contrôleur des actions d'administration
  *

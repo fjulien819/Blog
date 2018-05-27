@@ -1,6 +1,4 @@
 <?php
-
-//require_once 'Framework/Modele.php';
 namespace App\Modele;
 use App\Framework\Modele;
 

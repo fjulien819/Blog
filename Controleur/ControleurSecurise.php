@@ -1,6 +1,6 @@
 <?php
-
-require_once 'Framework/Controleur.php';
+namespace App\Controleur;
+use App\Framework\Controleur;
 /**
  * Classe parente des contrôleurs soumis à authentification
  *

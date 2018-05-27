@@ -1,9 +1,5 @@
 <?php
-
 namespace App\Controleur;
-//require_once 'Framework/Controleur.php';
-//require_once 'Modele/Billet.php';
-//require_once 'Modele/Commentaire.php';
 use App\Framework\Controleur;
 use App\Modele\Billet;
 use App\Modele\Commentaire;
