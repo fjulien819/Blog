@@ -1,6 +1,5 @@
 <?php
-
-require_once 'Configuration.php';
+namespace App\Framework;
 
 /**
  * Classe modélisant une vue
@@ -18,7 +17,7 @@ class Vue {
 
     /**
      * Constructeur
-     * 
+     *
      * @param string $action Action à laquelle la vue est associée
      * @param string $controleur Nom du contrôleur auquel la vue est associée
      */
@@ -34,7 +33,7 @@ class Vue {
 
     /**
      * Génère et affiche la vue
-     * 
+     *
      * @param array $donnees Données nécessaires à la génération de la vue
      */
     public function generer($donnees) {
@@ -54,11 +53,11 @@ class Vue {
 
     /**
      * Génère un fichier vue et renvoie le résultat produit
-     * 
+     *
      * @param string $fichier Chemin du fichier vue à générer
      * @param array $donnees Données nécessaires à la génération de la vue
      * @return string Résultat de la génération de la vue
-     * @throws Exception Si le fichier vue est introuvable
+     * @throws \Exception Si le fichier vue est introuvable
      */
     private function genererFichier($fichier, $donnees) {
         if (file_exists($fichier)) {
@@ -73,14 +72,14 @@ class Vue {
             return ob_get_clean();
         }
         else {
-            throw new Exception("Fichier '$fichier' introuvable");
+            throw new \Exception("Fichier '$fichier' introuvable");
         }
     }
 
     /**
      * Nettoie une valeur insérée dans une page HTML
      * Permet d'éviter les problèmes d'exécution de code indésirable (XSS) dans les vues générées
-     * 
+     *
      * @param string $valeur Valeur à nettoyer
      * @return string Valeur nettoyée
      */

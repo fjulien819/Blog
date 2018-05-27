@@ -1,7 +1,7 @@
 <?php
-
-require_once 'Framework/Controleur.php';
-require_once 'Modele/Billet.php';
+namespace App\Controleur;
+use App\Framework\Controleur;
+use App\Modele\Billet;
 
 class ControleurAccueil extends Controleur {
 
@@ -18,4 +18,3 @@ class ControleurAccueil extends Controleur {
     }
 
 }
-

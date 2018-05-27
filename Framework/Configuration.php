@@ -1,8 +1,8 @@
 <?php
-
+namespace App\Framework;
 /**
  * Classe de gestion des paramètres de configuration
- * 
+ *
  * Inspirée du SimpleFramework de Frédéric Guillot
  * (https://github.com/fguillot/simpleFramework)
  *
@@ -16,7 +16,7 @@ class Configuration {
 
     /**
      * Renvoie la valeur d'un paramètre de configuration
-     * 
+     *
      * @param string $nom Nom du paramètre
      * @param string $valeurParDefaut Valeur à renvoyer par défaut
      * @return string Valeur du paramètre
@@ -34,7 +34,7 @@ class Configuration {
     /**
      * Renvoie le tableau des paramètres en le chargeant au besoin depuis un fichier de configuration.
      * Les fichiers de configuration recherchés sont Config/dev.ini et Config/prod.ini (dans cet ordre)
-     * 
+     *
      * @return array Tableau des paramètres
      * @throws Exception Si aucun fichier de configuration n'est trouvé
      */
@@ -55,4 +55,3 @@ class Configuration {
     }
 
 }
-

@@ -1,8 +1,14 @@
 <?php
 
-require_once 'Framework/Controleur.php';
-require_once 'Modele/Billet.php';
-require_once 'Modele/Commentaire.php';
+namespace App\Controleur;
+//require_once 'Framework/Controleur.php';
+//require_once 'Modele/Billet.php';
+//require_once 'Modele/Commentaire.php';
+use App\Framework\Controleur;
+use App\Modele\Billet;
+use App\Modele\Commentaire;
+
+
 /**
  * Contrôleur des actions liées aux billets
  *
@@ -14,7 +20,7 @@ class ControleurBillet extends Controleur {
     private $commentaire;
 
     /**
-     * Constructeur 
+     * Constructeur
      */
     public function __construct() {
         $this->billet = new Billet();
@@ -24,10 +30,10 @@ class ControleurBillet extends Controleur {
     // Affiche les détails sur un billet
     public function index() {
         $idBillet = $this->requete->getParametre("id");
-        
+
         $billet = $this->billet->getBillet($idBillet);
         $commentaires = $this->commentaire->getCommentaires($idBillet);
-        
+
         $this->genererVue(array('billet' => $billet, 'commentaires' => $commentaires));
     }
 
@@ -36,11 +42,10 @@ class ControleurBillet extends Controleur {
         $idBillet = $this->requete->getParametre("id");
         $auteur = $this->requete->getParametre("auteur");
         $contenu = $this->requete->getParametre("contenu");
-        
+
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet);
-        
+
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executerAction("index");
     }
 }
-
