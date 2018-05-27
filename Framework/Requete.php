@@ -35,14 +35,14 @@ class Requete {
      *
      * @param string $nom Nom d paramètre
      * @return string Valeur du paramètre
-     * @throws Exception Si le paramètre n'existe pas dans la requête
+     * @throws \Exception Si le paramètre n'existe pas dans la requête
      */
     public function getParametre($nom) {
         if ($this->existeParametre($nom)) {
             return $this->parametres[$nom];
         }
         else {
-            throw new Exception("Paramètre '$nom' absent de la requête");
+            throw new \Exception("Paramètre '$nom' absent de la requête");
         }
     }
 

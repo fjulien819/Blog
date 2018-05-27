@@ -27,7 +27,7 @@ class Routeur {
 
             $controleur->executerAction($action);
         }
-        catch (Exception $e) {
+        catch (\Exception $e) {
             $this->gererErreur($e);
         }
     }
@@ -37,7 +37,7 @@ class Routeur {
      *
      * @param Requete $requete Requête reçue
      * @return Instance d'un contrôleur
-     * @throws Exception Si la création du contrôleur échoue
+     * @throws \Exception Si la création du contrôleur échoue
      */
     private function creerControleur(Requete $requete) {
         // Grâce à la redirection, toutes les URL entrantes sont du type :
@@ -76,9 +76,9 @@ class Routeur {
     /**
      * Gère une erreur d'exécution (exception)
      *
-     * @param Exception $exception Exception qui s'est produite
+     * @param \Exception $exception Exception qui s'est produite
      */
-    private function gererErreur(Exception $exception) {
+    private function gererErreur(\Exception $exception) {
         $vue = new Vue('erreur');
         $vue->generer(array('msgErreur' => $exception->getMessage()));
     }

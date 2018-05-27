@@ -36,7 +36,7 @@ abstract class Modele {
     /**
      * Renvoie un objet de connexion à la BDD en initialisant la connexion au besoin
      *
-     * @return PDO Objet PDO de connexion à la BDD
+     * @return \PDO Objet PDO de connexion à la BDD
      */
     private static function getBdd() {
         if (self::$bdd === null) {

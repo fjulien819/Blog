@@ -29,7 +29,7 @@ abstract class Controleur {
      * Exécute l'action à réaliser.
      * Appelle la méthode portant le même nom que l'action sur l'objet Controleur courant
      *
-     * @throws Exception Si l'action n'existe pas dans la classe Controleur courante
+     * @throws \Exception Si l'action n'existe pas dans la classe Controleur courante
      */
     public function executerAction($action)
     {
@@ -39,7 +39,7 @@ abstract class Controleur {
         }
         else {
             $classeControleur = get_class($this);
-            throw new Exception("Action '$action' non définie dans la classe $classeControleur");
+            throw new \Exception("Action '$action' non définie dans la classe $classeControleur");
         }
     }
 
