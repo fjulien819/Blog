@@ -22,6 +22,8 @@ class Routeur {
             // Permet de gérer uniformément ces deux types de requête HTTP
             $requete = new Requete(array_merge($_GET, $_POST));
 
+            $this->session = $requete->getSession();
+
             $controleur = $this->creerControleur($requete);
             $action = $this->creerAction($requete);
 
@@ -79,7 +81,7 @@ class Routeur {
      * @param \Exception $exception Exception qui s'est produite
      */
     private function gererErreur(\Exception $exception) {
-        $vue = new Vue('erreur');
+        $vue = new Vue('erreur', $this->session);
         $vue->generer(array('msgErreur' => $exception->getMessage()));
     }
 
