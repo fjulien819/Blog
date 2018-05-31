@@ -17,13 +17,19 @@ class ControleurConnexion extends Controleur
     public function connecter()
     {
         if ($this->requete->existeParametre("login") &&
-          $this->requete->existeParametre("mdp")) {
+          $this->requete->existeParametre("mdp"))
+          {
+
             $login = $this->requete->getParametre("login");
             $mdp = $this->requete->getParametre("mdp");
-            if ($this->utilisateur->connecter($login, $mdp)) {
+
+            if ($this->utilisateur->connecter($login, $mdp))
+            {
                 $utilisateur = $this->utilisateur->getUtilisateur($login, $mdp);
-                $this->requete->getSession()->setAttribut("idUtilisateur",
+
+                        $this->requete->getSession()->setAttribut("idUtilisateur",
                         $utilisateur['idUtilisateur']);
+
                 $this->requete->getSession()->setAttribut("login",
                         $utilisateur['login']);
                 $this->rediriger("admin");
