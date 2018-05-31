@@ -23,6 +23,7 @@ abstract class Controleur {
     public function setRequete(Requete $requete)
     {
         $this->requete = $requete;
+        $this->session = $requete->getSession();
     }
 
     /**
@@ -60,7 +61,7 @@ abstract class Controleur {
         $classeControleur = get_class($this);
         $controleur = str_replace("App\\Controleur\\Controleur", "", $classeControleur);
         // Instanciation et génération de la vueF
-        $vue = new Vue($this->action, $controleur);
+        $vue = new Vue($this->action, $this->session, $controleur);
         $vue->generer($donneesVue);
     }
 

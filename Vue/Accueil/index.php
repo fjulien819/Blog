@@ -1,5 +1,4 @@
 <?php $this->titre = "Mon Blog"; ?>
-
 <?php foreach ($billets as $billet):
     ?>
 

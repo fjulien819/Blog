@@ -54,4 +54,12 @@ class Session
             throw new \Exception("Attribut '$nom' absent de la session");
         }
     }
+
+
+
+    public function isAdmin(){
+      return isset($_SESSION['idUtilisateur']);
+    }
+
+
 }

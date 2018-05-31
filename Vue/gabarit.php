@@ -15,6 +15,24 @@
   </head>
   <body>
 
+    <?php
+
+    $session = $this->getSession();
+
+    $idUtilisateur = $session->isAdmin();
+
+    if ($idUtilisateur) {
+      $valButton = "Déconnexion";
+      $linkButton = "connexion/deconnecter";
+    }
+    else {
+      $valButton = "Connexion";
+      $linkButton = "connexion";
+    }
+
+
+
+     ?>
 
     <div id="global">
 
@@ -22,7 +40,12 @@
           <nav class="navbar navbar-dark bg-dark">
 
             <a class="navbar-brand" href="">  Mon blog</a>
-            <button type="button" class="btn btn-light">Connexion</button>
+          
+
+
+              <a href="<?php echo $linkButton; ?>"><button type="button" class="btn btn-light"><?php echo $valButton; ?></button></a>
+
+
           </nav>
         </header>
 
@@ -40,7 +63,7 @@
 
 
 
-        
+
 
 
 

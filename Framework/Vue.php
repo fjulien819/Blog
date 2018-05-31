@@ -21,7 +21,8 @@ class Vue {
      * @param string $action Action à laquelle la vue est associée
      * @param string $controleur Nom du contrôleur auquel la vue est associée
      */
-    public function __construct($action, $controleur = "") {
+    public function __construct($action, $session, $controleur = "") {
+      $this->session = $session;
         // Détermination du nom du fichier vue à partir de l'action et du constructeur
         // La convention de nommage des fichiers vues est : Vue/<$controleur>/<$action>.php
         $fichier = "Vue/";
@@ -29,6 +30,10 @@ class Vue {
             $fichier = $fichier . $controleur . "/";
         }
         $this->fichier = $fichier . $action . ".php";
+    }
+
+    public function getSession(){
+      return $this->session;
     }
 
     /**
