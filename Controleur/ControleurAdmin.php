@@ -29,4 +29,16 @@ class ControleurAdmin extends ControleurSecurise
         $this->genererVue(array('nbBillets' => $nbBillets,
             'nbCommentaires' => $nbCommentaires, 'login' => $login));
     }
+    public function billets()
+    {
+      $billets = $this->billet->getBillets();
+      $this->genererVue(array('billets' => $billets ));
+    }
+
+    public function commentaires()
+    {
+      $commentaires = $this->commentaire->getAllCom();
+      $this->genererVue(array('commentaires' => $commentaires ));
+    }
+
 }

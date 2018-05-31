@@ -37,4 +37,14 @@ class Commentaire extends Modele {
        $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
        return $ligne['nbCommentaires'];
     }
+
+    public function getAllCom()
+    {
+      $sql = 'select COM_ID as id, COM_DATE as date,
+      COM_AUTEUR as auteur, COM_CONTENU as contenu from  T_COMMENTAIRE';
+      $commentaires = $this->executerRequete($sql);
+      return $commentaires;
+    }
+
+
 }
