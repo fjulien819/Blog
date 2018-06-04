@@ -50,4 +50,21 @@ class Billet extends Modele {
     return $ligne['nbBillets'];
 }
 
+    public function delete($id)
+    {
+      $sql = 'delete from T_BILLET where BIL_ID = ' . $id;
+
+      if ($this->executerRequete($sql))
+      {
+        return "Le billet a bien été supprimé";
+      }
+      else
+      {
+        throw new \Exception("Le billet avec l'identifiant" . $id . "n'a pas pu être supprimer");
+      }
+
+
+
+    }
+
 }

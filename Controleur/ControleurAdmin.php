@@ -41,4 +41,14 @@ class ControleurAdmin extends ControleurSecurise
       $this->genererVue(array('commentaires' => $commentaires ));
     }
 
+    public function deleteBillet()
+    {
+      $id = $this->requete->getParametre("id");
+      $this->session->setAttribut("flash", $this->billet->delete($id));
+      $this->rediriger("Admin", "billets");
+
+
+
+    }
+
 }

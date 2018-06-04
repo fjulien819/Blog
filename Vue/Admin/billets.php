@@ -23,7 +23,7 @@
 
     <a href="billet/<?php echo $billet['id']; ?>"><span class="badge badge-dark">Afficher</span></a>
     <a href=""><span class="badge badge-dark">Modifier</span></a>
-    <a href=""><span class="badge badge-dark">Supprimer</span></a>
+    <a href="admin/deletebillet/<?php echo $billet['id'];?>"><span class="badge badge-dark">Supprimer</span></a>
 
     <hr>
 
