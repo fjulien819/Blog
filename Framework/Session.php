@@ -61,5 +61,9 @@ class Session
       return isset($_SESSION['idUtilisateur']);
     }
 
+    public function deleteKey($key)
+    {
+      unset ($_SESSION[$key]);
+    }
 
 }

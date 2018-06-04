@@ -30,7 +30,25 @@
       $linkButton = "connexion";
     }
 
+    if ($session->existeAttribut("flash"))
+    {
+      $msgFlash =
+      '<div class=" alert  alert-success alert-dismissible fade show" role="alert">
+        <strong>' . $session->getAttribut("flash") . '</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
 
+
+
+    }
+    else {
+      $msgFlash ="";
+
+    }
+
+    $this->session->deleteKey('flash'); 
 
      ?>
 
@@ -40,7 +58,7 @@
           <nav class="navbar navbar-dark bg-dark">
 
             <a class="navbar-brand" href="">  Mon blog</a>
-          
+
 
 
               <a href="<?php echo $linkButton; ?>"><button type="button" class="btn btn-light"><?php echo $valButton; ?></button></a>
@@ -50,13 +68,16 @@
         </header>
 
         <div id="contenu" class="container">
+
+        <?php echo $msgFlash; ?>
+
             <?= $contenu ?>
         </div> <!-- #contenu -->
 
         <footer id="piedBlog" >
 
           <p class = "col-12 text-center " >Blog réalisé avec PHP, HTML5 et CSS.</p>
-
+<?php print_r($_SESSION) ?>
         </footer>
 
     </div> <!-- #global -->
