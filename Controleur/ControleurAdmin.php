@@ -64,4 +64,22 @@ class ControleurAdmin extends ControleurSecurise
   $this->rediriger("Admin", "billets");
 
   }
+
+  public function addBillet()
+  {
+  $this->genererVue();
+  }
+
+  public function add()
+  {
+    $titre = $this->requete->getParametre("titre");
+    $contenu = $this->requete->getParametre("contenu");
+    $this->session->setAttribut("flash",     $this->billet->add($titre, $contenu));
+
+    $this->rediriger("Admin", "billets");
+
+
+
+  }
+
 }

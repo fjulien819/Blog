@@ -8,8 +8,9 @@
 
 
 <div class="card ">
-  <div class="card-header bg-white">
-    Liste des billets
+  <div class=" card-header bg-white ">
+    <p class="">Liste des billets</p> <a class="btn btn-dark" href="admin/addBillet" role="button">Créer un nouveau billet</a>
+
   </div>
   <div class="card-body ">
 

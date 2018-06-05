@@ -87,5 +87,24 @@ class Billet extends Modele {
 
     }
 
+    public function add($titre, $contenu)
+    {
+      $sql = 'insert into t_billet (BIL_DATE, BIL_TITRE, BIL_CONTENU) values(:date, :titre, :contenu)';
+      $resultat = $this->executerRequete($sql, array(
+        ':date' => date("Y-m-d H:i:s"),
+        ':titre' => $titre,
+        ':contenu' => $contenu
+      ));
+
+      if($resultat->rowCount() > 0)
+      {
+
+        return "Le billet a bien été Ajouté";
+      }
+      else
+      {
+        throw new \Exception("Le billet " . $titre . " n'a pu être ajouté");
+      }
+    }
 
 }
