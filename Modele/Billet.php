@@ -52,19 +52,40 @@ class Billet extends Modele {
 
     public function delete($id)
     {
-      $sql = 'delete from T_BILLET where BIL_ID = ' . $id;
+      $sql = 'delete from T_BILLET where BIL_ID = :id';
+      $resultat = $this->executerRequete($sql, array(':id' => $id));
 
-      if ($this->executerRequete($sql))
+      if ($resultat->rowCount() > 0)
       {
         return "Le billet a bien été supprimé";
       }
       else
       {
-        throw new \Exception("Le billet avec l'identifiant" . $id . "n'a pas pu être supprimer");
+        throw new \Exception("Aucun billet ne correspond à l'identifiant " . $id );
       }
 
+    }
 
+    public function update($id, $titre, $contenu)
+    {
+
+      $sql = 'update T_billet set BIL_TITRE = :titre, BIL_CONTENU = :contenu  WHERE BIL_ID = :id';
+      $resultat = $this->executerRequete($sql, array(
+        ':titre' => $titre,
+        ':contenu' => $contenu,
+        ':id' => $id
+      ));
+
+      if ($resultat->rowCount() > 0)
+      {
+        return "Le billet a bien été modifié";
+      }
+      else
+      {
+        throw new \Exception("Le billet " . $titre . " n'a pu être modifié");
+      }
 
     }
+
 
 }

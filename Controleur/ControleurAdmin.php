@@ -46,9 +46,22 @@ class ControleurAdmin extends ControleurSecurise
       $id = $this->requete->getParametre("id");
       $this->session->setAttribut("flash", $this->billet->delete($id));
       $this->rediriger("Admin", "billets");
-
-
-
     }
 
+    public function updateBillet()
+  {
+    $idBillet = $this->requete->getParametre("id");
+    $billet = $this->billet->getBillet($idBillet);
+    $this->genererVue(array('billet' => $billet ));
+  }
+
+  public function update()
+  {
+  $id = $this->requete->getParametre("id");
+  $titre = $this->requete->getParametre("titre");
+  $contenu = $this->requete->getParametre("contenu");
+  $this->session->setAttribut("flash", $this->billet->update($id, $titre, $contenu));
+  $this->rediriger("Admin", "billets");
+
+  }
 }

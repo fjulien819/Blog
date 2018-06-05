@@ -22,7 +22,7 @@
     <h6 class="card-subtitle mb-2 text-muted"><?php echo $billet['date']; ?></h6>
 
     <a href="billet/<?php echo $billet['id']; ?>"><span class="badge badge-dark">Afficher</span></a>
-    <a href=""><span class="badge badge-dark">Modifier</span></a>
+    <a href="admin/updateBillet/<?php echo $billet['id']; ?>"><span class="badge badge-dark">Modifier</span></a>
     <a href="admin/deletebillet/<?php echo $billet['id'];?>"><span class="badge badge-dark">Supprimer</span></a>
 
     <hr>
