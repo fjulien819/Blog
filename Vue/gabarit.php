@@ -147,7 +147,7 @@ $this->session->deleteKey('flash');
             <?= $contenu ?>
         </div> <!-- #contenu -->
 
-        <footer id="piedBlog" >
+        <footer class="mt-5">
 
 
         </footer>

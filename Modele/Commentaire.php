@@ -46,5 +46,21 @@ class Commentaire extends Modele {
       return $commentaires;
     }
 
+    public function deleteCom($tab)
+    {
+      $sql = 'delete from T_COMMENTAIRE where COM_ID = :id';
+      foreach ($tab as $idCommentaire) {
+      $resultat[] = $this->executerRequete($sql, array(':id' => $idCommentaire ));
+      }
+      if (count($resultat) > 0)
+      {
+        return count($resultat) . " commentaire(s) supprimé(s)";
+      }
+      else
+      {
+        throw new \Exception("Aucun commentaire n'a pu être supprimé");
+      }
 
+
+    }
 }

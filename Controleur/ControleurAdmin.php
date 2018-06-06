@@ -74,12 +74,16 @@ class ControleurAdmin extends ControleurSecurise
   {
     $titre = $this->requete->getParametre("titre");
     $contenu = $this->requete->getParametre("contenu");
-    $this->session->setAttribut("flash",     $this->billet->add($titre, $contenu));
+    $this->session->setAttribut("flash", $this->billet->add($titre, $contenu));
 
     $this->rediriger("Admin", "billets");
 
-
-
   }
 
+  public function deleteCom()
+  {
+    $tabCom = $this->requete->getParametre('tabCom');
+    $this->session->setAttribut("flash", $this->commentaire->deleteCom($tabCom));
+    $this->rediriger("Admin", "commentaires");
+  }
 }
