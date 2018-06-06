@@ -22,11 +22,11 @@ else {
   </a>';
 }
 
-if ($session->existeAttribut("flash"))
+if ($flash = $session->getFlash())
 {
   $msgFlash =
   '<div class=" alert  alert-success alert-dismissible fade show" role="alert">
-    <strong>' . $session->getAttribut("flash") . '</strong>
+    <strong>' . $flash . '</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -34,10 +34,7 @@ if ($session->existeAttribut("flash"))
 }
 else {
   $msgFlash ="";
-
 }
-
-$this->session->deleteKey('flash');
 
  ?>
 

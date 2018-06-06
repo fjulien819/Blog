@@ -8,6 +8,8 @@ namespace App\Framework;
  */
 class Session
 {
+    const SESSION_FLASH_KEY = 'flash';
+
     /**
      * Constructeur.
      * Démarre ou restaure la session
@@ -64,6 +66,22 @@ class Session
     public function deleteKey($key)
     {
       unset ($_SESSION[$key]);
+    }
+
+
+    public function setFlash($string){
+      $this->setAttribut(self::SESSION_FLASH_KEY, $string);
+    }
+
+    public function getFlash(){
+      if($this->existeAttribut(self::SESSION_FLASH_KEY)){
+        $flash = $this->getAttribut(self::SESSION_FLASH_KEY);
+        $this->deleteKey(self::SESSION_FLASH_KEY);
+      }else{
+        $flash = false;
+      }
+
+      return $flash;
     }
 
 }

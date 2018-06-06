@@ -21,7 +21,8 @@ class Requete {
     public function __construct($parametres) {
         $this->parametres = $parametres;
         $this->session = new Session();
-        
+
+
     }
 
     /**

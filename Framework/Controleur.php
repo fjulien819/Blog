@@ -84,4 +84,9 @@ abstract class Controleur {
       header("Location:" . $racineWeb . $controleur . "/" . $action);
     }
 
+
+    protected function setFlash($string){
+      $this->session->setFlash($string);
+    }
+
 }

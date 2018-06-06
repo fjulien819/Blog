@@ -44,7 +44,7 @@ class ControleurAdmin extends ControleurSecurise
     public function deleteBillet()
     {
       $id = $this->requete->getParametre("id");
-      $this->session->setAttribut("flash", $this->billet->delete($id));
+      $this->setFlash( $this->billet->delete($id));
       $this->rediriger("Admin", "billets");
     }
 
@@ -60,7 +60,7 @@ class ControleurAdmin extends ControleurSecurise
   $id = $this->requete->getParametre("id");
   $titre = $this->requete->getParametre("titre");
   $contenu = $this->requete->getParametre("contenu");
-  $this->session->setAttribut("flash", $this->billet->update($id, $titre, $contenu));
+  $this->setFlash($this->billet->update($id, $titre, $contenu));
   $this->rediriger("Admin", "billets");
 
   }
@@ -74,7 +74,7 @@ class ControleurAdmin extends ControleurSecurise
   {
     $titre = $this->requete->getParametre("titre");
     $contenu = $this->requete->getParametre("contenu");
-    $this->session->setAttribut("flash", $this->billet->add($titre, $contenu));
+    $this->setFlash( $this->billet->add($titre, $contenu));
 
     $this->rediriger("Admin", "billets");
 
@@ -83,7 +83,7 @@ class ControleurAdmin extends ControleurSecurise
   public function deleteCom()
   {
     $tabCom = $this->requete->getParametre('tabCom');
-    $this->session->setAttribut("flash", $this->commentaire->deleteCom($tabCom));
+    $this->setFlash( $this->commentaire->deleteCom($tabCom));
     $this->rediriger("Admin", "commentaires");
   }
 }
