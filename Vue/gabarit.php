@@ -1,3 +1,47 @@
+<?php
+
+$session = $this->getSession();
+
+$idUtilisateur = $session->isAdmin();
+
+if ($idUtilisateur) {
+  $button = '<div class="dropdown mt-3">
+    <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-unlock mr-1"></i>Connecté
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="admin/index">Admin</a>
+      <a class="dropdown-item" href="connexion/deconnecter">Déconnexion</a>
+    </div>
+  </div>';
+}
+else {
+
+  $button = '<a class="mt-3" href="connexion">
+      <button type="button" class="btn btn-outline-light"><i class="fas fa-lock mr-1"></i>Connexion</button>
+  </a>';
+}
+
+if ($session->existeAttribut("flash"))
+{
+  $msgFlash =
+  '<div class=" alert  alert-success alert-dismissible fade show" role="alert">
+    <strong>' . $session->getAttribut("flash") . '</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>';
+}
+else {
+  $msgFlash ="";
+
+}
+
+$this->session->deleteKey('flash');
+
+ ?>
+
+
 <!doctype html>
 <html lang="fr">
   <head>
@@ -5,7 +49,7 @@
     <meta charset="utf-8">
     <base href="<?= $racineWeb ?>" >
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="Contenu/stylev.css" />
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -15,64 +59,88 @@
     branding: false
 
    });</script>
+   <link rel="stylesheet" href="Contenu/style.css" />
     <title><?= $titre ?></title>
 
   </head>
   <body>
 
-    <?php
+      <header class="masthead" style="background-image: url('https://images.pexels.com/photos/373437/pexels-photo-373437.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
+        <div class="overlay"></div>
+        <div class="container col-12">
 
-    $session = $this->getSession();
+          <div class="row col-12 d-flex justify-content-end">
 
-    $idUtilisateur = $session->isAdmin();
-
-    if ($idUtilisateur) {
-      $valButton = "Déconnexion";
-      $linkButton = "connexion/deconnecter";
-    }
-    else {
-      $valButton = "Connexion";
-      $linkButton = "connexion";
-    }
-
-    if ($session->existeAttribut("flash"))
-    {
-      $msgFlash =
-      '<div class=" alert  alert-success alert-dismissible fade show" role="alert">
-        <strong>' . $session->getAttribut("flash") . '</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>';
+            <?php echo $button; ?>
 
 
+          </div>
 
-    }
-    else {
-      $msgFlash ="";
 
-    }
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <a href="">
+              <div class=" text-center text-white p-3">
+                <img style="border-radius:50px; width:90px; height:90px;" src="https://images.pexels.com/photos/25758/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="" class="rounded-circle img-thumbnail ">
+                <h1 class="display-5">Jean Forteroche</h1>
+                <h2 class="lead">Billet simple pour l'Alaska</h2>
+              </div>
+            </a>
+            </div>
+          </div>
 
-    $this->session->deleteKey('flash');
+        </div>
 
-     ?>
+    </header>
 
-    <div id="global">
 
-        <header class="mb-2">
-          <nav class="navbar navbar-dark bg-dark">
+      <nav class="navbar navbar-dark bg-dark">
 
-            <a class="navbar-brand" href="">  Mon blog</a>
+        <a class="navbar-brand" href="">  Mon blog</a>
 
 
 
-              <a href="<?php echo $linkButton; ?>"><button type="button" class="btn btn-light"><?php echo $valButton; ?></button></a>
 
 
-          </nav>
-        </header>
 
-        <div id="contenu" class="container">
+      </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="contenu" class="container mt-5">
 
         <?php echo $msgFlash; ?>
 
@@ -81,11 +149,10 @@
 
         <footer id="piedBlog" >
 
-          <p class = "col-12 text-center " >Blog réalisé avec PHP, HTML5 et CSS.</p>
-<?php print_r($_SESSION) ?>
+
         </footer>
 
-    </div> <!-- #global -->
+
 
 
 
