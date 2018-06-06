@@ -92,4 +92,20 @@ class Vue {
         return htmlspecialchars($valeur, ENT_QUOTES, 'UTF-8', false);
     }
 
+    private function supprimerHTML($string){
+      return strip_tags($string);
+    }
+
+    private function tronquer($string, $longueur = 20){
+
+      return mb_strimwidth($string, 0, $longueur, '...');
+
+    }
+
+    private function genererExtrait($string, $longueur = 20 )
+    {
+      $string = $this->supprimerHTML($string);
+      $extrait = $this->tronquer($string, $longueur);
+      return $extrait;
+    }
 }

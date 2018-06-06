@@ -9,7 +9,7 @@
             <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
           </a>
       </h5>
-        <p class="card-text"><?= $this->nettoyer($billet['contenu']) ?></p>
+        <p class="card-text"><?= $this->genererExtrait($billet['contenu'], 200 )?></p>
         <p class="card-text"><small class="text-muted">Publié le <time><?= $this->nettoyer($billet['date']) ?></time></small></p>
       </div>
     </div>
