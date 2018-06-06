@@ -4,33 +4,34 @@
     <li class="breadcrumb-item active" aria-current="page">Billets</li>
   </ol>
 </nav>
+<a class="float-right "href="admin/addBillet"><button type="button" class="btn btn-dark">Créer un nouveau billet</button></a>
+<h3>Liste des billets publiés</h3>
 
 
 
-<div class="card ">
-  <div class=" card-header bg-white ">
-    <p class="">Liste des billets</p> <a class="btn btn-dark" href="admin/addBillet" role="button">Créer un nouveau billet</a>
+<div class="table-responsive-sm">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" class="col-2">Date d'ajout</th>
+      <th scope="col">Titre</th>
+      <th scope="col" class="col-3">Action</th>
+    </tr>
+  </thead>
+  <tbody>
 
-  </div>
-  <div class="card-body ">
+    <?php foreach ($billets as $billet): ?>
+      <tr>
+        <td scope="row"><?php echo $billet['date']; ?></td>
+        <td><?php echo $billet['titre']; ?></td>
+        <td>
+          <a  href="billet/<?php echo $billet['id']; ?>"><span class="badge badge-dark">Afficher</span></a>
+          <a  href="admin/updateBillet/<?php echo $billet['id']; ?>"><span class="badge badge-dark">Modifier</span></a>
+          <a  href="admin/deletebillet/<?php echo $billet['id'];?>"><span class="badge badge-dark">Supprimer</span></a>
+        </td>
+      </tr>
+    <?php endforeach; ?>
 
-
-<?php foreach ($billets as $billet): ?>
-
-
-
-    <h5 class="card-title"><?php echo $billet['titre']; ?></h5>
-    <h6 class="card-subtitle mb-2 text-muted"><?php echo $billet['date']; ?></h6>
-
-    <a href="billet/<?php echo $billet['id']; ?>"><span class="badge badge-dark">Afficher</span></a>
-    <a href="admin/updateBillet/<?php echo $billet['id']; ?>"><span class="badge badge-dark">Modifier</span></a>
-    <a href="admin/deletebillet/<?php echo $billet['id'];?>"><span class="badge badge-dark">Supprimer</span></a>
-
-    <hr>
-
-<?php endforeach; ?>
-
-
-
-  </div>
-</div>
+  </tbody>
+</table>
+<div>
