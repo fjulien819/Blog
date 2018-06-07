@@ -77,11 +77,11 @@ abstract class Controleur {
     * @param string $controleur Contrôleur
     * @param type $action Action Action
     */
-    protected function rediriger($controleur, $action = null)
+    protected function rediriger($controleur, $action = null, $id = null)
     {
       $racineWeb = Configuration::get("racineWeb", "/");
       // Redirection vers l'URL racine_site/controleur/action
-      header("Location:" . $racineWeb . $controleur . "/" . $action);
+      header("Location:" . $racineWeb . $controleur . "/" . $action . "/" . $id);
     }
 
 

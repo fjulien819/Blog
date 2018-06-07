@@ -60,7 +60,48 @@ class Commentaire extends Modele {
       {
         throw new \Exception("Aucun commentaire n'a pu être supprimé");
       }
+    }
 
+
+    public function getCom($idCom)
+    {
+      $sql = 'select * from T_COMMENTAIRE where COM_ID = :idCom';
+      $result = $this->executerRequete($sql, array(':idCom' => $idCom ));
+      return $result->fetch();
 
     }
+
+
+    // renvoi le nombre de signalement pour un commentaire
+    public function countReport($id)
+    {
+      $sql = 'select COM_SIGNALEMENT from t_commentaire where COM_ID = :id';
+      $resultat = $this->executerRequete($sql, array(':id' =>$id ));
+      return $resultat->fetchcolumn();
+
+    }
+
+
+    // ajoute un signalement a un commentaire
+    public function addReport($id)
+    {
+
+      $nbrReport = $this->countReport($id);
+      $newNbrReport = $nbrReport += 1;
+
+
+      $sql = 'update t_commentaire set COM_SIGNALEMENT = :newNbrReport where COM_ID = :id';
+      $resultat = $this->executerRequete($sql, array(':newNbrReport' => $newNbrReport, ':id' => $id ));
+
+      if ($resultat->rowCount() > 0) {
+        return "Le commentaire a été signalé";
+      }
+      else
+      {
+        throw new \Exception("Le commentaire n'a pu être signalé");
+      }
+
+    }
+
+
 }

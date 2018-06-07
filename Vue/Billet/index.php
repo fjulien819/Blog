@@ -21,6 +21,7 @@
       <div class="media-body">
         <h5 class="mt-0"><?= $this->nettoyer($commentaire['auteur']) ?> dit :</h5>
         <p><?= $this->nettoyer($commentaire['contenu']) ?></p>
+        <a href="Billet/report/<?= $commentaire['id'] ?>"><button type="button" class="btn btn-outline-danger">Signaler</button></a>
       </div>
     </div>
 

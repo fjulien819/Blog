@@ -16,7 +16,6 @@
 
 
 
-
   </div>
 
 
@@ -49,6 +48,7 @@
       commentaire(s) publié(s)
     </div>
 
+
     <a class="card-footer text-white clearfix small z-1" href="admin/commentaires">
       <span class="float-left">Voir tous les commentaires</span>
       <span class="float-right">
@@ -56,7 +56,4 @@
       </span>
     </a>
   </div>
-</div>
-
-
 </div>

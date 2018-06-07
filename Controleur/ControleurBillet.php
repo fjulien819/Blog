@@ -44,4 +44,16 @@ class ControleurBillet extends Controleur {
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executerAction("index");
     }
+    // ajouter un signalement
+    public function report()
+    {
+      $idCommentaire = $this->requete->getParametre("id");
+      $result = $this->commentaire->addReport($idCommentaire);
+
+      $dataCom = $this->commentaire->getCom($idCommentaire);
+      $idBillet = $dataCom ['BIL_ID'];
+
+      $this->setFlash($result);
+      $this->rediriger("Billet", "index", $idBillet );
+    }
 }
