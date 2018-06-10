@@ -39,7 +39,8 @@ class ControleurAdmin extends ControleurSecurise
     public function commentaires()
     {
       $commentaires = $this->commentaire->getAllCom();
-      $this->genererVue(array('commentaires' => $commentaires ));
+      $listComReport = $this->commentaire->getComReport();
+      $this->genererVue(array('commentaires' => $commentaires, 'listComReport' => $listComReport ));
     }
 
     public function deleteBillet()

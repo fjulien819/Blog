@@ -41,7 +41,7 @@ class Commentaire extends Modele {
     public function getAllCom()
     {
       $sql = 'select COM_ID as id, COM_DATE as date,
-      COM_AUTEUR as auteur, COM_CONTENU as contenu from  T_COMMENTAIRE';
+      COM_AUTEUR as auteur, COM_CONTENU as contenu from  T_COMMENTAIRE where COM_SIGNALEMENT IS NULL ORDER BY date desc';
       $commentaires = $this->executerRequete($sql);
       return $commentaires;
     }
@@ -106,9 +106,24 @@ class Commentaire extends Modele {
     // renvoi le nombre de commentaires signalé
     public function countComReport()
     {
-      $sql = 'select * from t_commentaire where COM_SIGNALEMENT != "null"';
+      $sql = 'select * from t_commentaire where COM_SIGNALEMENT IS NOT NULL';
       $resultat = $this->executerRequete($sql);
       return ($resultat->rowCount());
+    }
+    // renvoi la liste des commentaires signalé
+    public function getComReport()
+    {
+
+      $sql = 'select COM_ID as id, COM_DATE as date,
+      COM_AUTEUR as auteur, COM_CONTENU as contenu, COM_SIGNALEMENT as signalement from  T_COMMENTAIRE where COM_SIGNALEMENT IS NOT NULL ORDER BY COM_SIGNALEMENT desc';
+      $resultat = $this->executerRequete($sql);
+      if($resultat->rowCount() > 0 )
+      {
+        return $resultat;
+      }
+      return false;
+
+
     }
 
 
