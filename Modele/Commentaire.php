@@ -103,5 +103,13 @@ class Commentaire extends Modele {
 
     }
 
+    // renvoi le nombre de commentaires signalé
+    public function countComReport()
+    {
+      $sql = 'select * from t_commentaire where COM_SIGNALEMENT != "null"';
+      $resultat = $this->executerRequete($sql);
+      return ($resultat->rowCount());
+    }
+
 
 }

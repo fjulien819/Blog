@@ -8,15 +8,19 @@
   <h1>Administration</h1>
   <small class="text-muted">Bienvenue, <?= $this->nettoyer($login) ?> !</small>
   <hr>
+  <?php if ($nbrComReport)
+  {
+  echo '<div class="alert alert-danger" role="alert">
+  ' . $nbrComReport . ' Commentaire(s) signalé(s) !
+</div>';
+  }
+  ?>
+
     <div class="row d-flex justify-content-center mb-5">
 
       <div class="row col-lg-4 col-11">
         <a class="btn btn btn-outline-dark col-12 " href="admin/addBillet" role="button">Créer un nouveaux billet</a>
       </div>
-
-
-
-
 
     </div>
 

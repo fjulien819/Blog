@@ -26,8 +26,9 @@ class ControleurAdmin extends ControleurSecurise
         $nbBillets = $this->billet->getNombreBillets();
         $nbCommentaires = $this->commentaire->getNombreCommentaires();
         $login = $this->requete->getSession()->getAttribut("login");
+        $nbrComReport = $this->commentaire->countComReport();
         $this->genererVue(array('nbBillets' => $nbBillets,
-            'nbCommentaires' => $nbCommentaires, 'login' => $login));
+            'nbCommentaires' => $nbCommentaires, 'login' => $login, 'nbrComReport' => $nbrComReport ));
     }
     public function billets()
     {
@@ -86,4 +87,7 @@ class ControleurAdmin extends ControleurSecurise
     $this->setFlash( $this->commentaire->deleteCom($tabCom));
     $this->rediriger("Admin", "commentaires");
   }
+
+
+
 }
