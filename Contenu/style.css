@@ -22,4 +22,21 @@ header.masthead {
   a:link
   {
   text-decoration:none;
-  } 
+  }
+
+  .form-control:focus {
+  border-color: #242424;
+  box-shadow: inset 0 1px 1px rgba(36, 36, 36, 0.075), 0 0 8px rgba(36, 36, 36, 0.075);
+}
+.breadcrumb
+{
+  border-radius: 0;
+}
+.breadcrumb a
+{
+  color: white;
+}
+.dropdown-item:active
+{
+  background-color: #242424;
+}

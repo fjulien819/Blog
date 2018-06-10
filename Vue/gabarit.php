@@ -25,7 +25,7 @@ else {
 if ($flash = $session->getFlash())
 {
   $msgFlash =
-  '<div class=" alert  alert-success alert-dismissible fade show" role="alert">
+  '<div class=" alert  alert-success alert-dismissible fade show mb-0" role="alert">
     <strong>' . $flash . '</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
@@ -58,18 +58,14 @@ else {
 
   </head>
   <body>
-
+<?= $msgFlash ?>
       <header class="masthead" style="background-image: url('https://images.pexels.com/photos/373437/pexels-photo-373437.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
         <div class="overlay"></div>
         <div class="container col-12">
 
-          <div class="row col-12 d-flex justify-content-end">
-
+          <div class="row d-flex justify-content-center justify-content-sm-end pr-2 pl-2">
             <?php echo $button; ?>
-
-
           </div>
-
 
           <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
@@ -84,20 +80,7 @@ else {
           </div>
 
         </div>
-
-    </header>
-
-
-      <nav class="navbar navbar-dark bg-dark">
-
-        <a class="navbar-brand" href="">  Mon blog</a>
-
-
-
-
-
-
-      </nav>
+      </header>
 
 
 
@@ -105,54 +88,14 @@ else {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div id="contenu" class="container mt-5">
-
-        <?php echo $msgFlash; ?>
-
+          <div class="container-fluide">
             <?= $contenu ?>
-        </div> <!-- #contenu -->
-
-        <footer class="mt-5">
-          
-
-
-        </footer>
+          </div>
 
 
 
-
-
-
-
+      <footer class="mt-5">
+      </footer>
 
 
 
