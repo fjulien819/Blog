@@ -7,6 +7,9 @@
   </ol>
 </nav>
 <div class="container">
+
+
+
     <article>
         <header>
             <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
@@ -14,6 +17,7 @@
         </header>
 
         <p><?= $billet['contenu']; ?></p>
+      
     </article>
 
     <hr />

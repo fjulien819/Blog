@@ -122,7 +122,19 @@ class Commentaire extends Modele {
         return $resultat;
       }
       return false;
+    }
 
+    public function resetReport($id)
+    {
+      $sql = 'update t_commentaire set COM_SIGNALEMENT = null where COM_ID = :id';
+      $resultat = $this->executerRequete($sql, array(':id' => $id ));
+      if($resultat->rowCount() > 0)
+
+      return 'Les signalements de ce commentaire ont été réinitialisé';
+      else
+      {
+        throw new \Exception("Le commentaire n'a pu être réinitialisé");
+      }
 
     }
 

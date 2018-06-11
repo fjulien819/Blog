@@ -89,6 +89,11 @@ class ControleurAdmin extends ControleurSecurise
     $this->rediriger("Admin", "commentaires");
   }
 
-
+  public function resetReport()
+  {
+    $id = $this->requete->getParametre('id');
+    $this->setFlash( $this->commentaire->resetReport($id));
+    $this->rediriger("Admin", "commentaires");
+  }
 
 }
