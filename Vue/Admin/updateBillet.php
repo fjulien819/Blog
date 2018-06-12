@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
         <label for="updatebillet">Contenu :</label>
-        <textarea class="form-control textareaBillet" id="updatebillet" name="contenu"  rows="3" required><?php echo $billet['contenu']; ?></textarea>
+        <textarea class="form-control textareaBillet" id="updatebillet" name="contenu"  rows="3" required ><?php echo $billet['contenu']; ?></textarea>
     </div>
     <input type="hidden" name="id" value="<?= $billet['id'] ?>" />
     <input type="hidden" name="formToken" value="<?= $_SESSION['token'] ?>">

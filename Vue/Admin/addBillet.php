@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
         <label for="addbillet">Contenu :</label>
-        <textarea class="form-control textareaBillet" id="addbillet" name="contenu"  rows="3" ></textarea>
+        <textarea class="form-control textareaBillet" id="addbillet" name="contenu" required></textarea>
     </div>
     <input type="hidden" name="formToken" value="<?= $_SESSION['token'] ?>">
 
