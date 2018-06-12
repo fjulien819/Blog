@@ -23,9 +23,17 @@ class ControleurConnexion extends Controleur
             $login = $this->requete->getParametre("login");
             $mdp = $this->requete->getParametre("mdp");
 
-            if ($this->utilisateur->connecter($login, $mdp))
+
+
+            if ($this->utilisateur->connecter($login))
             {
-                $utilisateur = $this->utilisateur->getUtilisateur($login, $mdp);
+              $hash = $this->utilisateur->getHash($login);
+
+              if(password_verify($mdp, $hash))
+              {
+
+
+                $utilisateur = $this->utilisateur->getUtilisateur($login, $hash);
 
                         $this->requete->getSession()->setAttribut("idUtilisateur",
                         $utilisateur['idUtilisateur']);
@@ -36,6 +44,15 @@ class ControleurConnexion extends Controleur
                 $this->requete->getSession()->setAttribut("token", bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)));
 
                 $this->rediriger("admin");
+
+
+              }
+              else
+              {
+                $this->genererVue(array('msgErreur' =>
+                  'Login ou mot de passe incorrects'), "index");
+              }
+
             }
             else
                 $this->genererVue(array('msgErreur' =>

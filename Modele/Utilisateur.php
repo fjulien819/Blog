@@ -15,11 +15,18 @@ class Utilisateur extends Modele {
    * @param string $mdp Le mot de passe
    * @return boolean Vrai si l'utilisateur existe, faux sinon
    */
-  public function connecter($login, $mdp)
+  public function connecter($login)
   {
-    $sql = "select UTIL_ID from T_UTILISATEUR where UTIL_LOGIN=? and UTIL_MDP=?";
-    $utilisateur = $this->executerRequete($sql, array($login, $mdp));
+    $sql = "select UTIL_ID from T_UTILISATEUR where UTIL_LOGIN=?";
+    $utilisateur = $this->executerRequete($sql, array($login));
     return ($utilisateur->rowCount() == 1);
+  }
+  public function getHash($login)
+  {
+    $sql = "select UTIL_MDP from T_UTILISATEUR where UTIL_LOGIN=?";
+    $utilisateur = $this->executerRequete($sql, array($login));
+    $hash = $utilisateur->fetchcolumn();
+    return $hash;
   }
   /**
    * Renvoie un utilisateur existant dans la BD
