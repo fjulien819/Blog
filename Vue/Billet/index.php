@@ -17,7 +17,7 @@
         </header>
 
         <p><?= $billet['contenu']; ?></p>
-      
+
     </article>
 
     <hr />
@@ -54,10 +54,10 @@
 
     <form  method="post" action="billet/commenter">
       <div class="form-group">
-        <input type="text" class="form-control" id="auteur" name="auteur" placeholder="Votre pseudo" required>
+        <input maxlength="100" data-counter-label="{remaining} Caractère(s) restant(s)" type="text" class="form-control" id="auteur" name="auteur" placeholder="Votre pseudo" required>
       </div>
       <div class="form-group">
-        <textarea class="form-control"  id="txtCommentaire" name="contenu" rows="4"
+        <textarea maxlength="200" data-counter-label="{remaining} Caractère(s) restant(s)" class="form-control"  id="txtCommentaire" name="contenu" rows="4"
                   placeholder="Votre commentaire" required></textarea>
       </div>
       <input type="hidden" name="id" value="<?= $billet['id'] ?>" />

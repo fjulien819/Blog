@@ -55,3 +55,7 @@ header.masthead {
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before{
   background-color:#343a40;
 }
+.my-short-and-sweet-counter {
+	color:#666;
+	font-size:.75em;
+}

@@ -115,15 +115,15 @@ var_dump($_SESSION);
     <script type="text/javascript">
   tinymce.init({
     selector: '.textareaBillet',
-
-
     plugins : 'advlist autolink link image lists charmap print preview',
-
-
-
 
   });
   </script>
+  <!-- short-and-sweet -->
+  <script src="Contenu/js/short-and-sweet/short-and-sweet.min.js"></script>
+  <script>
+    shortAndSweet('textarea, input', { counterClassName: 'my-short-and-sweet-counter'});
+</script>
 
 
   </body>

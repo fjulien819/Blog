@@ -9,7 +9,7 @@
   <form method="post" action="admin/update">
     <div class="form-group">
        <label for="exampleInputPassword1">Titre : </label>
-       <input type="text" class="form-control" id="exampleInputPassword1" name="titre" required value="<?php echo $billet['titre']; ?>">
+       <input maxlength="250" data-counter-label="{remaining} Caractère(s) restant(s)" type="text" class="form-control" id="exampleInputPassword1" name="titre" required value="<?php echo $billet['titre']; ?>">
     </div>
     <div class="form-group">
         <label for="updatebillet">Contenu :</label>

@@ -11,7 +11,7 @@
 
     <div class="form-group">
        <label for="exampleInputPassword1">Titre : </label>
-       <input type="text" class="form-control" id="exampleInputPassword1" name="titre" required>
+       <input maxlength="250" data-counter-label="{remaining} Caractère(s) restant(s)" type="text" class="form-control" id="exampleInputPassword1" name="titre" required>
     </div>
     <div class="form-group">
         <label for="addbillet">Contenu :</label>
