@@ -16,6 +16,7 @@
         <textarea class="form-control textareaBillet" id="updatebillet" name="contenu"  rows="3" required><?php echo $billet['contenu']; ?></textarea>
     </div>
     <input type="hidden" name="id" value="<?= $billet['id'] ?>" />
+    <input type="hidden" name="formToken" value="<?= $_SESSION['token'] ?>">
     <a class="btn btn-dark" href="Admin/billets" role="button">Annuler les modifications</a>
     <button type="submit" class="btn btn-dark">Modifier le billet</button>
    </form>

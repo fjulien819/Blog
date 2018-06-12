@@ -62,7 +62,19 @@ class ControleurAdmin extends ControleurSecurise
   $id = $this->requete->getParametre("id");
   $titre = $this->requete->getParametre("titre");
   $contenu = $this->requete->getParametre("contenu");
-  $this->setFlash($this->billet->update($id, $titre, $contenu));
+
+  $formToken = $this->requete->getParametre("formToken");
+  if ($formToken === $_SESSION['token'])
+  {
+      $this->setFlash($this->billet->update($id, $titre, $contenu));
+  }
+  else
+  {
+
+    $this->setFlash('Le billet n\'a pas pu être modifié ');
+
+  }
+
   $this->rediriger("Admin", "billets");
 
   }
@@ -76,7 +88,19 @@ class ControleurAdmin extends ControleurSecurise
   {
     $titre = $this->requete->getParametre("titre");
     $contenu = $this->requete->getParametre("contenu");
-    $this->setFlash( $this->billet->add($titre, $contenu));
+
+    $formToken = $this->requete->getParametre("formToken");
+
+    if ($formToken === $_SESSION['token'])
+    {
+        $this->setFlash( $this->billet->add($titre, $contenu));
+    }
+    else
+    {
+
+      $this->setFlash('Le billet n\'a pas pu être ajouté ');
+
+    }
 
     $this->rediriger("Admin", "billets");
 

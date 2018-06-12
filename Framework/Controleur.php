@@ -88,5 +88,5 @@ abstract class Controleur {
     protected function setFlash($string){
       $this->session->setFlash($string);
     }
-
+    
 }

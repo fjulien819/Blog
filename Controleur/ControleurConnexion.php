@@ -32,6 +32,9 @@ class ControleurConnexion extends Controleur
 
                 $this->requete->getSession()->setAttribut("login",
                         $utilisateur['login']);
+
+                $this->requete->getSession()->setAttribut("token", bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)));
+
                 $this->rediriger("admin");
             }
             else
