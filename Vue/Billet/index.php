@@ -10,48 +10,40 @@
 
 
 
-    <article>
-        <header>
+    <article class = "bg-light p-4">
+
+        <header class="row d-flex justify-content-between">
+          <div class="col-12 col-sm-8">
             <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
             <time><?= $this->nettoyer($billet['date']) ?></time>
+          </div>
+          <div class="col-12 col-sm-4 d-flex align-items-center justify-content-center mt-2 mt-sm-0">
+              <?php if($this->getSession()->isAdmin()){echo '<a href="Admin/updateBillet/' . $this->nettoyer($billet["id"]) . '"><button type="button" class="btn btn-dark"><i class="fas fa-edit"></i>Modifier ce billet</button></a>';} ?>
+          </div>
         </header>
-
-        <p><?= $billet['contenu']; ?></p>
+        <hr>
+        <p class=" pr-4 pl-4"><?= $billet['contenu']; ?></p>
 
     </article>
 
-    <hr />
 
+  <div class="bg-light p-4 mt-5">
     <header>
-        <h1 class="mb-5"id="titreReponses">Réponses à <?= $this->nettoyer($billet['titre']) ?></h1>
+        <h2 class="mb-5"id="titreReponses">Réponses à <?= $this->nettoyer($billet['titre']) ?></h2>
+        <hr>
     </header>
-
-
-
-
 
     <?php foreach ($commentaires as $commentaire): ?>
 
-      <div class="media shadow-none p-3 mb-5 bg-light rounded">
-        <div class="media-body">
-          <h5 class="mt-0"><?= $this->nettoyer($commentaire['auteur']) ?> dit :</h5>
-          <p><?= $this->nettoyer($commentaire['contenu']) ?></p>
-          <a class="float-right" href="Billet/report/<?= $commentaire['id'] ?>"><button type="button" class="btn btn-outline-danger">Signaler</button></a>
+      <div class="card mb-4">
+        <div class="card-body text-dark pt-2 pb-3">
+          <h5 class="card-title"><strong><?= $this->nettoyer($commentaire['auteur']) ?></strong> dit :</h5></h5>
+          <p class="card-text"><?= $this->nettoyer($commentaire['contenu']) ?></p>
         </div>
+        <div class="card-footer bg-light  border-light pt-1"><a href="Billet/report/<?= $commentaire['id'] ?>"><small class="text-muted"><i class="fas fa-exclamation-circle"></i> Signaler ce commentaire</small></a></div>
       </div>
 
-
-
-
-
     <?php endforeach; ?>
-
-
-    <hr />
-
-
-
-
     <form  method="post" action="billet/commenter">
       <div class="form-group">
         <input maxlength="100" data-counter-label="{remaining} Caractère(s) restant(s)" type="text" class="form-control" id="auteur" name="auteur" placeholder="Votre pseudo" required>
@@ -61,6 +53,22 @@
                   placeholder="Votre commentaire" required></textarea>
       </div>
       <input type="hidden" name="id" value="<?= $billet['id'] ?>" />
-      <button type="submit" class="btn btn-dark float-right">Commenter</button>
+      <button type="submit" class="btn btn-dark">Commenter</button>
     </form>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>

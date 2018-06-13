@@ -49,75 +49,74 @@ class ControleurAdmin extends ControleurSecurise
       $this->setFlash( $this->billet->delete($id));
       $this->rediriger("Admin", "billets");
     }
-
+    //génère la vue pour modifier un billet
     public function updateBillet()
   {
     $idBillet = $this->requete->getParametre("id");
     $billet = $this->billet->getBillet($idBillet);
     $this->genererVue(array('billet' => $billet ));
   }
-
-  public function update()
-  {
-  $id = $this->requete->getParametre("id");
-  $titre = $this->requete->getParametre("titre");
-  $contenu = $this->requete->getParametre("contenu");
-
-  $formToken = $this->requete->getParametre("formToken");
-  if ($formToken === $_SESSION['token'])
-  {
-      $this->setFlash($this->billet->update($id, $titre, $contenu));
-  }
-  else
-  {
-
-    $this->setFlash('Le billet n\'a pas pu être modifié ');
-
-  }
-
-  $this->rediriger("Admin", "billets");
-
-  }
-
-  public function addBillet()
-  {
-  $this->genererVue();
-  }
-
-  public function add()
-  {
-    $titre = $this->requete->getParametre("titre");
-    $contenu = $this->requete->getParametre("contenu");
-
-    $formToken = $this->requete->getParametre("formToken");
-
-    if ($formToken === $_SESSION['token'])
+    // update d'un billet
+    public function update()
     {
-        $this->setFlash( $this->billet->add($titre, $contenu));
-    }
-    else
-    {
+      $id = $this->requete->getParametre("id");
+      $titre = $this->requete->getParametre("titre");
+      $contenu = $this->requete->getParametre("contenu");
+      $formToken = $this->requete->getParametre("formToken");
 
-      $this->setFlash('Le billet n\'a pas pu être ajouté ');
+      if ($formToken === $_SESSION['token'])
+      {
+          $this->setFlash($this->billet->update($id, $titre, $contenu));
+      }
+      else
+      {
+
+        $this->setFlash('Le billet n\'a pas pu être modifié ');
+
+      }
+
+      $this->rediriger("Admin", "billets");
 
     }
+    //génère le vue pour ajouter un billet
+    public function addBillet()
+    {
+      $this->genererVue();
+    }
+    //Ajout d'un nouveau billet
+    public function add()
+    {
+      $titre = $this->requete->getParametre("titre");
+      $contenu = $this->requete->getParametre("contenu");
+      $formToken = $this->requete->getParametre("formToken");
 
-    $this->rediriger("Admin", "billets");
+      if ($formToken === $_SESSION['token'])
+      {
+          $this->setFlash( $this->billet->add($titre, $contenu));
+      }
+      else
+      {
 
-  }
+        $this->setFlash('Le billet n\'a pas pu être ajouté ');
 
-  public function deleteCom()
-  {
-    $tabCom = $this->requete->getParametre('tabCom');
-    $this->setFlash( $this->commentaire->deleteCom($tabCom));
-    $this->rediriger("Admin", "commentaires");
-  }
+      }
 
-  public function resetReport()
-  {
-    $id = $this->requete->getParametre('id');
-    $this->setFlash( $this->commentaire->resetReport($id));
-    $this->rediriger("Admin", "commentaires");
-  }
+      $this->rediriger("Admin", "billets");
+
+    }
+
+    public function deleteCom()
+    {
+      $tabCom = $this->requete->getParametre('tabCom');
+      $this->setFlash( $this->commentaire->deleteCom($tabCom));
+      $this->rediriger("Admin", "commentaires");
+    }
+    // Remise à zéro des signalements d'un commentaire
+    public function resetReport()
+    {
+      $id = $this->requete->getParametre('id');
+      $this->setFlash( $this->commentaire->resetReport($id));
+      $this->rediriger("Admin", "commentaires");
+    }
 
 }

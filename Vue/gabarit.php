@@ -95,12 +95,6 @@ else {
 
 
       <footer class="mt-5">
-<?php
-var_dump($_SESSION);
-
-
- ?>
-
       </footer>
 
 
