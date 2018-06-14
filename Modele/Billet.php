@@ -14,7 +14,7 @@ class Billet extends Modele {
      * @return \PDOStatement La liste des billets
      */
     public function getBillets() {
-        $sql = 'select BIL_ID as id, BIL_DATE as date,'
+        $sql = 'select BIL_ID as id, DATE_FORMAT(BIL_DATE, "%d/%m/%Y à %Hh%i") as date,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
                 . ' order by BIL_ID desc';
         $billets = $this->executerRequete($sql);
@@ -28,7 +28,7 @@ class Billet extends Modele {
      * @throws \Exception Si l'identifiant du billet est inconnu
      */
     public function getBillet($idBillet) {
-        $sql = 'select BIL_ID as id, BIL_DATE as date,'
+        $sql = 'select BIL_ID as id, DATE_FORMAT(BIL_DATE, "%d/%m/%Y à %Hh%i") as date,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
                 . ' where BIL_ID=?';
         $billet = $this->executerRequete($sql, array($idBillet));
