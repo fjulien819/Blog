@@ -64,14 +64,14 @@ class ControleurAdmin extends ControleurSecurise
       $contenu = $this->requete->getParametre("contenu");
       $formToken = $this->requete->getParametre("formToken");
 
-      if ($formToken === $_SESSION['token'])
+      if ($this->session->checkCSRF($formToken))
       {
           $this->setFlash($this->billet->update($id, $titre, $contenu));
       }
       else
       {
 
-        $this->setFlash('Le billet n\'a pas pu être modifié ');
+        $this->setFlash('Le billet n\'a pas pu être modifié ', 'danger');
 
       }
 
@@ -90,7 +90,7 @@ class ControleurAdmin extends ControleurSecurise
       $contenu = $this->requete->getParametre("contenu");
       $formToken = $this->requete->getParametre("formToken");
 
-      if ($formToken === $_SESSION['token'])
+      if ($this->session->checkCSRF($formToken))
       {
           $this->setFlash( $this->billet->add($titre, $contenu));
       }

@@ -25,8 +25,8 @@ else {
 if ($flash = $session->getFlash())
 {
   $msgFlash =
-  '<div class=" alert  alert-success alert-dismissible fade show mb-0" role="alert">
-    <strong>' . $flash . '</strong>
+  '<div class=" alert  alert-'.$flash[1].' alert-dismissible fade show mb-0" role="alert">
+    <strong>' . $flash[0] . '</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>

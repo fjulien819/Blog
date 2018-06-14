@@ -17,7 +17,7 @@
         <label for="addbillet">Contenu :</label>
         <textarea class="form-control textareaBillet" id="addbillet" name="contenu" required></textarea>
     </div>
-    <input type="hidden" name="formToken" value="<?= $_SESSION['token'] ?>">
+    <input type="hidden" name="formToken" value="<?= $this->session->getCSRF() ?>">
 
 
     <button type="submit" class="btn btn-dark">Ajouter le billet</button>

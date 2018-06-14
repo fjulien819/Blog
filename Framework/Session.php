@@ -9,6 +9,7 @@ namespace App\Framework;
 class Session
 {
     const SESSION_FLASH_KEY = 'flash';
+    const SESSION_CSRF_KEY = 'token';
 
     /**
      * Constructeur.
@@ -68,9 +69,21 @@ class Session
       unset ($_SESSION[$key]);
     }
 
+    public function getCSRF(){
+      if(!$this->existeAttribut(self::SESSION_CSRF_KEY)){
+        $this->setAttribut(self::SESSION_CSRF_KEY, bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM)));
+      }
 
-    public function setFlash($string){
-      $this->setAttribut(self::SESSION_FLASH_KEY, $string);
+      return $this->getAttribut(self::SESSION_CSRF_KEY);
+    }
+
+    public function checkCSRF($token){
+      return $token === $this->getCSRF();
+    }
+
+
+    public function setFlash($string,$label = 'success'){
+      $this->setAttribut(self::SESSION_FLASH_KEY, [$string, $label]);
     }
 
     public function getFlash(){
