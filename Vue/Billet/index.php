@@ -17,7 +17,7 @@
             <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
             <time><?= $this->nettoyer($billet['date']) ?></time>
           </div>
-          <div class="col-12 col-sm-4 d-flex align-items-center justify-content-center mt-2 mt-sm-0">
+          <div class="col-12 col-sm-4 d-flex align-items-center justify-content-center justify-content-sm-end mt-3 mt-sm-0">
               <?php if($this->getSession()->isAdmin()){echo '<a href="Admin/updateBillet/' . $this->nettoyer($billet["id"]) . '"><button type="button" class="btn btn-dark"><i class="fas fa-edit"></i>Modifier ce billet</button></a>';} ?>
           </div>
         </header>
@@ -29,7 +29,7 @@
 
   <div class="bg-light p-4 mt-5">
     <header>
-        <h2 class="mb-5"id="titreReponses">Réponses à <?= $this->nettoyer($billet['titre']) ?></h2>
+        <h2 id="titreReponses">Réponses à <?= $this->nettoyer($billet['titre']) ?></h2>
         <hr>
     </header>
 

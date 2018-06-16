@@ -10,52 +10,46 @@
 if($listComReport)
 {
 ?>
-
   <?php foreach ($listComReport as $com): ?>
-
         <div class="card m-1 alert-danger ">
           <div class="card-body p-3">
             <div class="custom-control custom-checkbox">
               <input class="custom-control-input bg-white" type="checkbox" name="tabCom[]" value="<?php echo $com['id'] ?>" id="<?php echo $com['id'] ?>">
-              <label class="custom-control-label row d-flex justify-content-between" for="<?php echo $com['id'] ?>">
-  <div>
-                <span class="badge badge-danger"><?php echo $com['signalement'] . ' Signalement(s)'?></span>
-
-
-
-                <strong><?php echo $com['date'] ?> <?php echo $com['auteur'] ?> :</strong>
-                   <?php echo $com['contenu'] ?>
+              <label class="custom-control-label d-flex justify-content-between" for="<?php echo $com['id'] ?>">
+                <div>
+                    <span class="badge badge-danger">
+                      <?php echo $com['signalement'] . ' Signalement(s)'?>
+                    </span>
+                    <?php echo $com['date'] ?>
+                    <strong><?php echo $com['auteur'] ?> :</strong>
+                    <?php echo $com['contenu'] ?>
                 </div>
-
                    <div class="ml-1 mr-1">
-
-                     <a href="admin/resetReport/<?php echo $com['id'] ?>"> <button type="button" class="btn btn-dark btn-sm ">Réinitialiser</button></a>
-
+                     <a href="admin/resetReport/<?php echo $com['id'] ?>"> <i class="material-icons text-dark" >
+                     assignment_turned_in</i></a>
                    </div>
               </label>
             </div>
           </div>
         </div>
-
-<?php endforeach; ?>
+  <?php endforeach; ?>
 <?php
 }
 ?>
-
-
-    <?php foreach ($commentaires as $commentaire): ?>
+  <?php foreach ($commentaires as $commentaire): ?>
         <div class="card m-1 ">
           <div class="card-body p-3">
             <div class="custom-control custom-checkbox">
               <input class="custom-control-input" type="checkbox" name="tabCom[]" value="<?php echo $commentaire['id'] ?>" id="<?php echo $commentaire['id'] ?>">
               <label class="custom-control-label" for="<?php echo $commentaire['id'] ?>">
-                <strong><?php echo $commentaire['date'] ?> <?php echo $commentaire['auteur'] ?> :</strong>
-                <?php echo $commentaire['contenu'] ?>
+                  <?php echo $com['date'] ?>
+                  <strong><?php echo $com['auteur'] ?> :</strong>
+                  <?php echo $commentaire['contenu'] ?>
               </label>
             </div>
           </div>
         </div>
-    <?php endforeach; ?>
+  <?php endforeach; ?>
     <button type="submit" class="btn btn-dark float-right mb-5">Supprimer sélection</button>
   </form>
 

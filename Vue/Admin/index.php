@@ -16,21 +16,16 @@
   }
   ?>
 
-    <div class="row d-flex justify-content-center mb-5">
 
-      <div class="row col-lg-4 col-11">
-        <a class="btn btn btn-outline-dark col-12 " href="admin/addBillet" role="button">Créer un nouveaux billet</a>
-      </div>
+  <div class="row m-1 d-flex justify-content-center">
 
+    <div class="col-12  mb-3">
+        <a class="btn btn btn-outline-dark col-12 " href="admin/addBillet" role="button">Créer un nouveau billet</a>
     </div>
 
 
 
-
-
-  <div class="row m-1 d-flex justify-content-center">
-
-  <div class="col-lg-4 col-12 m-1 ">
+  <div class="col-lg-4 col-12 mb-3">
     <div class="card text-white bg-dark ">
       <div class="card-body">
           <i class="fas fa-file-alt"></i>
@@ -46,7 +41,7 @@
     </div>
   </div>
 
-  <div class="col-lg-4 col-12 m-1 ">
+  <div class="col-lg-4 col-12  mb-3">
     <div class="card text-white bg-dark ">
       <div class="card-body ">
           <i class="fas fa-comments"></i>

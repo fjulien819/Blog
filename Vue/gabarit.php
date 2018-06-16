@@ -51,6 +51,10 @@ else {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 
    <link rel="stylesheet" href="Contenu/style.css" />
@@ -58,6 +62,7 @@ else {
 
   </head>
   <body>
+
 <?= $msgFlash ?>
       <header class="masthead" style="background-image: url('https://images.pexels.com/photos/373437/pexels-photo-373437.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
         <div class="overlay"></div>
@@ -95,6 +100,7 @@ else {
 
 
       <footer class="mt-5">
+        
       </footer>
 
 
