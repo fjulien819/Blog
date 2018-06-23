@@ -99,8 +99,9 @@ else {
 
 
 
-      <footer class="mt-5">
-        
+      <footer class="footer bg-dark text-center p-3">
+        <p>Projet 3 : Un blog pour un écrivain</p>
+        <a class="text-light " href="https://github.com/fjulien819/Blog"><i class="fab fa-github"></i></a>
       </footer>
 
 
