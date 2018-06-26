@@ -39,9 +39,9 @@ class ControleurConnexion extends Controleur
                         $utilisateur['idUtilisateur']);
 
                 $this->requete->getSession()->setAttribut("login",
-                        $utilisateur['login']);                
+                        $utilisateur['login']);
 
-                $this->rediriger("admin");
+                $this->rediriger("admin", "index");
 
 
               }
@@ -63,6 +63,6 @@ class ControleurConnexion extends Controleur
     public function deconnecter()
     {
         $this->requete->getSession()->detruire();
-        $this->rediriger("accueil");
+        $this->rediriger("accueil", "index");
     }
 }
