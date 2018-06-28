@@ -1,8 +1,8 @@
 <?php
 namespace App\Controleur;
 use App\Framework\Controleur;
-use App\Modele\Billet;
-use App\Modele\Commentaire;
+use App\Modele\BilletDAO;
+use App\Modele\CommentaireDAO;
 
 
 /**
@@ -12,18 +12,29 @@ use App\Modele\Commentaire;
  */
 class ControleurBillet extends Controleur {
 
+    /**
+     * @var BilletDAO
+     */
     private $billet;
+    /**
+     * @var CommentaireDAO
+     */
     private $commentaire;
 
     /**
      * Constructeur
      */
     public function __construct() {
-        $this->billet = new Billet();
-        $this->commentaire = new Commentaire();
+        $this->billet = new BilletDAO();
+        $this->commentaire = new CommentaireDAO();
+
     }
 
     // Affiche les détails sur un billet
+
+    /**
+     * @throws \Exception
+     */
     public function index() {
         $idBillet = $this->requete->getParametre("id");
 
@@ -34,6 +45,10 @@ class ControleurBillet extends Controleur {
     }
 
     // Ajoute un commentaire sur un billet
+
+    /**
+     * @throws \Exception
+     */
     public function commenter() {
         $idBillet = $this->requete->getParametre("id");
         $auteur = $this->requete->getParametre("auteur");
@@ -46,6 +61,10 @@ class ControleurBillet extends Controleur {
         $this->executerAction("index");
     }
     // ajouter un signalement
+
+    /**
+     * @throws \Exception
+     */
     public function report()
     {
       $idCommentaire = $this->requete->getParametre("id");
@@ -55,6 +74,6 @@ class ControleurBillet extends Controleur {
       $idBillet = $dataCom ['BIL_ID'];
 
       $this->setFlash($result);
-      $this->rediriger("Billet", "index", $idBillet );
+      $this->rediriger("BilletDAO", "index", $idBillet );
     }
 }

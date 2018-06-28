@@ -1,19 +1,23 @@
 <?php
 namespace App\Controleur;
 use App\Framework\Controleur;
-use App\Modele\Utilisateur;
+use App\Modele\UtilisateurDAO;
 
 class ControleurConnexion extends Controleur
 {
     private $utilisateur;
     public function __construct()
     {
-        $this->utilisateur = new Utilisateur();
+        $this->utilisateur = new UtilisateurDAO();
     }
     public function index()
     {
         $this->genererVue();
     }
+
+    /**
+     * @throws \Exception
+     */
     public function connecter()
     {
         if ($this->requete->existeParametre("login") &&

@@ -1,8 +1,8 @@
 <?php
 namespace App\Controleur;
 use App\Framework\Controleur;
-use App\Modele\Billet;
-use App\Modele\Commentaire;
+use App\Modele\BilletDAO;
+use App\Modele\CommentaireDAO;
 
 /**
  * Contrôleur des actions d'administration
@@ -18,8 +18,8 @@ class ControleurAdmin extends ControleurSecurise
      */
     public function __construct()
     {
-        $this->billet = new Billet();
-        $this->commentaire = new Commentaire();
+        $this->billet = new BilletDAO();
+        $this->commentaire = new CommentaireDAO();
     }
     public function index()
     {

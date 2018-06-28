@@ -9,7 +9,7 @@ namespace App\Framework;
  * @version 1.0
  * @author Baptiste Pesquet
  */
-abstract class Modele {
+abstract class DAO {
 
     /** Objet PDO d'accès à la BD
         Statique donc partagé par toutes les instances des classes dérivées */

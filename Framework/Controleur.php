@@ -8,13 +8,27 @@ namespace App\Framework;
  * @version 1.0
  * @author Baptiste Pesquet
  */
+
+use App\Framework\Exception\NotFoundException;
+
+/**
+ * Class Controleur
+ * @package App\Framework
+ */
 abstract class Controleur {
 
-    /** Action à réaliser */
+    /**
+     * @var string
+     * Action à réaliser      *
+     */
     private $action;
 
-    /** Requête entrante */
+    /**
+     * @var Requete
+     */
     protected $requete;
+
+
     /**
      * Définit la requête entrante
      *
@@ -40,7 +54,7 @@ abstract class Controleur {
         }
         else {
             $classeControleur = get_class($this);
-            throw new \Exception("Action '$action' non définie dans la classe $classeControleur");
+            throw new NotFoundException();
         }
     }
 
@@ -85,6 +99,10 @@ abstract class Controleur {
     }
 
 
+    /**
+     * @param $string
+     * @param string $label
+     */
     protected function setFlash($string, $label='success'){
       $this->session->setFlash($string, $label);
     }

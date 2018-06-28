@@ -1,13 +1,13 @@
 <?php
 namespace App\Modele;
-use App\Framework\Modele;
+use App\Framework\DAO;
 
 /**
  * Modélise un utilisateur du blog
  *
  * @author Baptiste Pesquet
  */
-class Utilisateur extends Modele {
+class UtilisateurDAO extends DAO {
   /**
    * Vérifie qu'un utilisateur existe dans la BD
    *

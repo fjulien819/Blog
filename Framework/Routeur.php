@@ -1,6 +1,8 @@
 <?php
 namespace App\Framework;
 
+
+
 /*
  * Classe de routage des requêtes entrantes.
  *
@@ -10,6 +12,8 @@ namespace App\Framework;
  * @version 1.0
  * @author Baptiste Pesquet
  */
+use App\Framework\Exception\NotFoundException;
+
 class Routeur {
 
     /**
@@ -55,9 +59,14 @@ class Routeur {
         // La convention de nommage des fichiers controleurs est : Controleur/Controleur<$controleur>.php
 
         $classeControleur =   'App\Controleur\Controleur'.$controleur;
+            try{
 
-            $controleur = new $classeControleur();
-            $controleur->setRequete($requete);
+                $controleur = new $classeControleur();
+                $controleur->setRequete($requete);
+            }catch (\Exception $e){
+                throw new NotFoundException();
+            }
+
             return $controleur;
     }
 
@@ -81,6 +90,9 @@ class Routeur {
      * @param \Exception $exception Exception qui s'est produite
      */
     private function gererErreur(\Exception $exception) {
+      if( $exception instanceof NotFoundException){
+          header("HTTP/1.0 404 Not Found");
+      }
         $vue = new Vue('erreur', $this->session);
         $vue->generer(array('msgErreur' => $exception->getMessage()));
     }
