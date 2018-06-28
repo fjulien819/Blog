@@ -23,7 +23,15 @@ class Commentaire extends Modele {
             . ' values(?, ?, ?, ?)';
         $date = date("Y-m-d H:i:s");
 
-        $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
+        $result = $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
+        if (count($result) > 0)
+        {
+          return "Commentaire publié";
+        }
+        else
+        {
+          throw new \Exception("Aucun commentaire n'a pu être supprimé");
+        }
     }
    /**
     * Renvoie le nombre total de commentaires

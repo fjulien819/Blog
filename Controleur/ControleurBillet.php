@@ -39,7 +39,8 @@ class ControleurBillet extends Controleur {
         $auteur = $this->requete->getParametre("auteur");
         $contenu = $this->requete->getParametre("contenu");
 
-        $this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet);
+
+        $this->setFlash($this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet));
 
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executerAction("index");
