@@ -28,10 +28,10 @@ class Autoloader{
         {
             require $filename;
         }
-        else{
+        else
+            {
           throw new \Exception("File not found");
-
-        }
+    }
     }
 
 }

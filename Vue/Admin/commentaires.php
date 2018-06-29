@@ -42,7 +42,7 @@ if($listComReport)
             <div class="custom-control custom-checkbox">
               <input class="custom-control-input" type="checkbox" name="tabCom[]" value="<?php echo $commentaire['id'] ?>" id="<?php echo $commentaire['id'] ?>">
               <label class="custom-control-label" for="<?php echo $commentaire['id'] ?>">
-                  <?php echo $com['date'] ?>
+                  <?php echo $commentaire['date'] ?>
                   <strong><?php echo $commentaire['auteur'] ?> :</strong>
                   <?php echo $commentaire['contenu'] ?>
               </label>

@@ -38,13 +38,20 @@ class UtilisateurDAO extends DAO {
    */
   public function getUtilisateur($login, $mdp)
   {
-    $sql = "select UTIL_ID as idUtilisateur, UTIL_LOGIN as login, UTIL_MDP as mdp
+    $sql = "select UTIL_ID as id, UTIL_LOGIN as login, UTIL_MDP as mdp
       from T_UTILISATEUR where UTIL_LOGIN=? and UTIL_MDP=?";
     $utilisateur = $this->executerRequete($sql, array($login, $mdp));
     if ($utilisateur->rowCount() == 1)
-      return $utilisateur->fetch();  // Accès à la première ligne de résultat
+    {
+        $donnees = $utilisateur->fetch();
+        return new Utilisateur($donnees);
+
+    }
+       // Accès à la première ligne de résultat
     else
-      throw new \Exception("Aucun utilisateur ne correspond aux identifiants
+      {
+          throw new \Exception("Aucun utilisateur ne correspond aux identifiants
         fournis");
+      }
     }
 }

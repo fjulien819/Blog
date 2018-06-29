@@ -1,14 +1,15 @@
 <?php
 namespace App\Controleur;
 use App\Framework\Controleur;
+use App\Modele\Utilisateur;
 use App\Modele\UtilisateurDAO;
 
 class ControleurConnexion extends Controleur
 {
-    private $utilisateur;
+    private $utilisateurDAO;
     public function __construct()
     {
-        $this->utilisateur = new UtilisateurDAO();
+        $this->utilisateurDAO = new UtilisateurDAO();
     }
     public function index()
     {
@@ -27,23 +28,25 @@ class ControleurConnexion extends Controleur
             $login = $this->requete->getParametre("login");
             $mdp = $this->requete->getParametre("mdp");
 
+            $utilisateurObj = new Utilisateur(array("login" => $login, "mdp"=> $mdp, "id" => "null"));
 
-
-            if ($this->utilisateur->connecter($login))
+            if ($this->utilisateurDAO->connecter($utilisateurObj->getLogin()))
             {
-              $hash = $this->utilisateur->getHash($login);
+                $hash = $this->utilisateurDAO->getHash($utilisateurObj->getLogin());
 
-              if(password_verify($mdp, $hash))
+                if(password_verify($utilisateurObj->getMdp(), $hash))
               {
 
 
-                $utilisateur = $this->utilisateur->getUtilisateur($login, $hash);
+                $utilisateurObj = $this->utilisateurDAO->getUtilisateur($utilisateurObj->getLogin(), $hash);
+
+
 
                         $this->requete->getSession()->setAttribut("idUtilisateur",
-                        $utilisateur['idUtilisateur']);
+                        $utilisateurObj->getId());
 
                 $this->requete->getSession()->setAttribut("login",
-                        $utilisateur['login']);
+                        $utilisateurObj->getLogin());
 
                 $this->rediriger("admin", "index");
 
@@ -51,6 +54,7 @@ class ControleurConnexion extends Controleur
               }
               else
               {
+
                 $this->genererVue(array('msgErreur' =>
                   'Login ou mot de passe incorrects'), "index");
               }
@@ -58,7 +62,7 @@ class ControleurConnexion extends Controleur
             }
             else
                 $this->genererVue(array('msgErreur' =>
-                  'Login ou mot de passe incorrects'), "index");
+                  $utilisateurObj), "index");
         }
         else
             throw new \Exception(
